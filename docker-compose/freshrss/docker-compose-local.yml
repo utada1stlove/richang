@@ -1,0 +1,7 @@
+version: "2.4"
+
+services:
+
+  freshrss:
+    ports:
+      - "${PUBLISHED_PORT:-port}:${LISTEN:-80}"  #前面的port改为你自己的端口

@@ -1,0 +1,34 @@
+# docker-compose.yml
+
+version: '3.1'
+services:
+  teamspeak:
+    image: teamspeak
+    restart: always
+    ports:
+      - 9987:9987/udp # 语音服务
+      - 30033:30033   # 文件传输
+      - 41144:41144   # DNS域名解析（可选）
+      - 10011:10011   # 服务器查询 raw（可选）
+      # - 10022:10022   # 服务器查询 SSH（可选）
+      # - 10080:10080   # 网络请求 http（可选）
+      # - 10443:10443   # 网络请求 https（可选）
+    volumes:
+      - ./data:/var/ts3server
+    environment:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: db
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_PASSWORD: password # 数据库密码
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password  # 数据库密码
+      MYSQL_DATABASE: teamspeak
+    volumes:
+      - ./data/mysql:/var/lib/mysql  # 必需，否则重启镜像后数据丢失

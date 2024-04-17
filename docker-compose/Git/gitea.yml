@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - gitea-net
+    volumes:
+      - ./gitea/data:/data
+    ports:
+      - "3000:3000"
+      - "222:22"
+
+networks:
+  gitea-net:
+    driver: bridge

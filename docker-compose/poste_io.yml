@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  poste:
+    image: analogic/poste.io
+    container_name: poste
+    ports:
+      - "25:25"       # SMTP
+      - "110:110"     # POP3
+      - "143:143"     # IMAP
+      - "587:587"     # SMTP (Submission)
+      - "993:993"     # IMAP over SSL
+      - "995:995"     # POP3 over SSL
+      - "28080:80"     # HTTP for web administration (changed from 80 to 28080)
+      - "28443:443"    # HTTPS for web administration (changed from 443 to 28443)
+    volumes:
+      - maildata:/data
+      - maillogs:/var/log
+      - mailcerts:/etc/letsencrypt
+    environment:
+      - HTTPS=ON
+      - DISABLE_CLAMAV=TRUE  # Optionally disable ClamAV if not needed to save resources
+
+volumes:
+  maildata:
+  maillogs:
+  mailcerts:

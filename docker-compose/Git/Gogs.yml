@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  gogs:
+    image: gogs/gogs
+    ports:
+      - "3000:3000"  # Gogs web interface
+      - "22:22"      # SSH
+    volumes:
+      - "./data:/data"  # Gogs data

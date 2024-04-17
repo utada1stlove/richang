@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  siyuan:
+    image: b3log/siyuan:latest
+    container_name: siyuan
+    restart: always
+    #ports 6806:6806
+    volumes:
+      - /siyuan:/root/data/document/SiYuan
+    command: [--workspace=/root/data/document/SiYuan,--lang=zh_CN,--accessAuthCode=liko710544]
+    network_mode: "host"
