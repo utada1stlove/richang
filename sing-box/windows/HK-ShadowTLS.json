@@ -127,6 +127,8 @@
       {
         "rule_set": [
           "geosite-github"
+          "geosite-spotify",
+          "geosite-cloudflare"
 
         ],
         "outbound": "proxy"
@@ -159,6 +161,20 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-spotify.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-cloudflare",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cloudflare.srs",
         "download_detour": "proxy"
       },
       {

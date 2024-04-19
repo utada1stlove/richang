@@ -120,14 +120,26 @@
         "outbound": "direct"
       },
       {
+        "rule_set": [
+          "geosite-github"
+          "geosite-spotify",
+          "geosite-cloudflare"
+        ],
+        "outbound": "proxy"
+      },
+      {
         "rule_set":
         [
-          "geoip-cn",
-          "geosite-cn",
-          "geosite-private",
+          "Server-direct",
+          "Doapp",
+          "sama",
+          "geosite-tencent",
+          "geosite-bilibili",
           "geosite-douyu",
           "geosite-huya",
-          "geosite-bilibili"
+          "geoip-cn",
+          "geosite-cn",
+          "geosite-private"
         ],
         "outbound": "direct"
       },
@@ -140,7 +152,76 @@
       }
     ],
     "rule_set":
-    [
+    [      {
+      "tag": "geosite-github",
+      "type": "remote",
+      "format": "binary",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
+      "download_detour": "proxy"
+    },
+    {
+      "tag": "geosite-spotify",
+      "type": "remote",
+      "format": "binary",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-spotify.srs",
+      "download_detour": "proxy"
+    },
+    {
+      "tag": "geosite-cloudflare",
+      "type": "remote",
+      "format": "binary",
+      "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cloudflare.srs",
+      "download_detour": "proxy"
+    },
+      {
+        "tag": "Server-direct",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Server-direct.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "Doapp",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Doapp.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "sama",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-tencent",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tencent.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-douyu",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-huya",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },      
       {
         "tag": "geoip-cn",
         "type": "remote",
@@ -163,34 +244,13 @@
         "download_detour": "proxy"
       },
       {
-        "tag": "geosite-douyu",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-douyu.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "geosite-huya",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-huya.srs",
-        "download_detour": "proxy"
-      },
-      {
-        "tag": "geosite-bilibili",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
-        "download_detour": "proxy"
-      },
-      {
         "tag": "geosite-category-ads-all",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
         "download_detour": "proxy"
       }
-    ],
+  ],
     "auto_detect_interface": true,
     "final": "proxy"
   },
