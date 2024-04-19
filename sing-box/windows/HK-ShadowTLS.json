@@ -1,0 +1,261 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "alidns",
+        "address": "https://223.5.5.5/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "cloudflare",
+        "address": "https://1.1.1.1/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "proxy"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": [
+          "any"
+        ],
+        "server": "alidns"
+      },
+      {
+        "domain_suffix": [
+          ".cn"
+        ],
+        "server": "alidns"
+      },
+      {
+        "rule_set": [
+          "geosite-cn"
+        ],
+        "server": "alidns"
+      },
+      {
+        "rule_set": [
+          "geosite-category-ads-all"
+        ],
+        "server": "block"
+      }
+    ],
+    "final": "cloudflare",
+    "strategy": "",
+    "disable_cache": false,
+    "disable_expire": false
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "::",
+      "listen_port": 7891,
+      "tcp_fast_open": true,
+      "udp_fragment": true,
+      "sniff": true,
+      "set_system_proxy": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "shadowsocks",
+      "tag": "proxy",
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "7DKK/wELpwq4I5tK1CkIgD2YQSf8pVQYgNLeKEWmipE=",
+      "detour": "bwh-out",
+      "multiplex":
+      {
+        "enabled": true,
+        "protocol": "h2mux",
+        "max_connections": 1,
+        "min_streams": 4,
+        "padding": false
+      }
+    },
+    {
+      "type": "shadowtls",
+      "tag": "bwh-out",
+      "server": "45.78.27.223",
+      "server_port": 11091,
+      "version": 3,
+      "password": "qLoTPe4pckrMTPv3coYrkSHgCSrzIsAt/ejhPEIFWHA=",
+      "tls":
+      {
+        "enabled": true,
+        "server_name": "p16-ttug-sg.ibyteimg.com",
+        "utls":
+        {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "domain_suffix": [
+          ".cn"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geosite-github"
+
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "rule_set": [
+          "Server-direct",
+          "Doapp",
+          "sama",
+          "geosite-tencent",
+          "geosite-bilibili",
+          "geosite-douyu",
+          "geosite-huya",
+          "geoip-cn",
+          "geosite-cn",
+          "geosite-private"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geosite-category-ads-all"
+        ],
+        "outbound": "block"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "Server-direct",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Server-direct.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "Doapp",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Doapp.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "sama",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-tencent",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tencent.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-douyu",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-huya",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
+        "download_detour": "proxy"
+      },      
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-private.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+        "download_detour": "proxy"
+      }
+    ],
+    "auto_detect_interface": true,
+    "final": "proxy"
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui_download_url": "",
+      "secret": "22e694e4-093d-44bb-8ed2-b0e548c87a2e",
+      "default_mode": "",
+      "external_ui_download_detour": "",
+      "external_ui": "ui"
+    },
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "cache_id": "mycacheid",
+      "store_fakeip": true
+    }
+  }
+}
