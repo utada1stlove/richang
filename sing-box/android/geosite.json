@@ -522,7 +522,6 @@
             "outbounds":
             [
                 "direct",
-                "cmin2v6-stls",
                 "aws-shadowtls",
                 "cmi-hy2-hk",
                 "cmi-reality-hk",
