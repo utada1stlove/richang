@@ -913,7 +913,7 @@
                 "outbound": "Spotify"
             },
             {
-                "rule_set": "geosite-tiktok",
+                "rule_set": ["geosite-tiktok","geosite-pixiv"],
                 "outbound": "TikTok"
             },
             {
@@ -1152,6 +1152,13 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tiktok.srs",
+                "download_detour": "auto"
+            },
+            {
+                "tag": "geosite-pixiv",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-pixiv.srs",
                 "download_detour": "auto"
             },
             {
