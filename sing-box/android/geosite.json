@@ -624,11 +624,11 @@
         {
             "type": "shadowsocks",
             "tag": "jp-GC-多路复用",
-            "server": "live.tikonline.live",
+            "server": "video.tikonline.live",
             "server_port": 32298,
             "method": "aes-128-gcm",
             "password": "yzMfVOKJr8kXEBpEQ3MaVw==",
-            "multiplex":
+            "multiplex":    
             {
                 "enabled": true,
                 "protocol": "h2mux",
