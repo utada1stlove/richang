@@ -71,18 +71,12 @@
     ],
     "outbounds":
     [
-        {
-            "type": "shadowsocks",
-            "tag": "proxy",
+        {   "tag": "proxy",
+            "type": "vless",
             "server": "video.111365.xyz",
-            "server_port": 10219,
-            "method": "aes-128-gcm",
-            "password": "PpcL4zHHpRHGxn7df8pScw==",
-            "multiplex":
-            {
-                "enabled": true,
-                "padding": false
-            }
+            "server_port": 11405,
+            "uuid": "423a6451-d042-44e0-997a-fc5053b35207",
+            "packet_encoding": "xudp"
         },
         {
             "type": "direct",
