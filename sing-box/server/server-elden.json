@@ -1,0 +1,128 @@
+{
+    "log":
+    {
+        "disabled": false,
+        "level": "info",
+        "output": "/var/log/sing-box.log",
+        "timestamp": true
+    },
+    "dns":
+    {
+        "servers":
+        [
+            {
+                "tag": "cloudflare",
+                "address": "https://1.1.1.1/dns-query",
+                "strategy": "ipv4_only",
+                "detour": "direct"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules":
+        [
+            {
+                "rule_set":
+                [
+                    "geosite-category-ads-all"
+                ],
+                "server": "block"
+            }
+        ],
+        "final": "cloudflare",
+        "strategy": "",
+        "disable_cache": false,
+        "disable_expire": false
+    },
+    "inbounds":
+    [
+        {
+            "type": "shadowtls",
+            "tag": "st-in",
+            "listen": "::",
+            "listen_port": 443,
+            "version": 3,
+            "users":
+            [
+                {
+                    "name": "elden",
+                    "password": "你的密码"
+                }
+            ],
+            "handshake":
+            {
+                "server": "www.bing.com",
+                "server_port": 443
+            },
+            "strict_mode": true,
+            "detour": "shadowsocks-in"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "shadowsocks-in",
+            "listen": "127.0.0.1",
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "ZDg0ZWYxMmQwYzJhNGQzZTg0NTY3YzUyMjI5ZjUwZTY=" //强制需要生成的 sing-box generate rand --base64 32
+        }
+    ],
+    "outbounds":
+    [
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        }
+    ],
+    "route":
+    {
+        "rules":
+        [
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "rule_set":
+                [
+                    "geosite-category-ads-all"
+                ],
+                "outbound": "block"
+            }
+        ],
+        "rule_set":
+        [
+            {
+                "tag": "geosite-category-ads-all",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "direct"
+    },
+    "experimental":
+    {
+        "cache_file":
+        {
+            "enabled": true,
+            "path": "cache.db",
+            "cache_id": "mycacheid",
+            "store_fakeip": true
+        }
+    }
+}
