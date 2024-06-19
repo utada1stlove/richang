@@ -91,7 +91,7 @@
       "multiplex":
       {
         "enabled": true,
-        "protocol": "h2mux",
+        "protocol": "h2mux", // 说实话 这个地方的h2mux和smux 怎么切换我还是没搞懂 h2mux可以用的顺畅一点，但是smux不太行
         "max_connections": 1,
         "min_streams": 4,
         "padding": false,
