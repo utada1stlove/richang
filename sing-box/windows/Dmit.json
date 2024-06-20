@@ -1,10 +1,4 @@
 {
-    "log":
-    {
-        "disabled": false,
-        "level": "info",
-        "timestamp": true
-    },
     "dns":
     {
         "servers":
@@ -17,7 +11,7 @@
             },
             {
                 "tag": "cloudflare",
-                "address": "https://1.1.1.1/dns-query",
+                "address": "https://8.8.8.8/dns-query",
                 "strategy": "ipv4_only",
                 "detour": "proxy"
             },
@@ -65,62 +59,53 @@
     "inbounds":
     [
         {
-            "type": "tun",
-            "tag": "tun-in",
-            "stack": "system",
-            "interface_name": "utun",
-            "inet4_address": "172.19.0.1/30",
-            "domain_strategy": "",
-            "mtu": 1420,
-            "auto_route": true,
-            "strict_route": true,
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 7891,
+            "tcp_fast_open": true,
+            "udp_fragment": true,
             "sniff": true,
-            "sniff_timeout": "300ms",
-            "sniff_override_destination": true,
-            "udp_timeout": 300
+            "set_system_proxy": true
         }
     ],
     "outbounds":
     [
-        {
-            "type": "shadowsocks",
-            "tag": "proxy",
-            "method": "2022-blake3-chacha20-poly1305",
-            "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
-            "detour": "stl-1495",
-            "multiplex":
-            {
-                "enabled": true,
-                "protocol": "h2mux",
-                "max_connections": 1,
-                "min_streams": 4,
-                "padding": false,
-                "brutal":
-                {
-                    "enabled": true,
-                    "up_mbps": 400,
-                    "down_mbps": 400
-                }
-            }
-        },
-        {
-            "type": "shadowtls",
-            "tag": "stl-1495",
-            "server": "154.17.31.212",
-            "server_port": 11091,
-            "version": 3,
-            "password": "fufu",
-            "tls":
-            {
-                "enabled": true,
-                "server_name": "dm.video.weibocdn.com",
-                "utls":
-                {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            }
-        },
+    {
+      "type": "shadowsocks",
+      "tag": "proxy",
+      "method": "2022-blake3-chacha20-poly1305", 
+      "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
+      "detour": "stl-1495",
+      "multiplex": {
+        "enabled": true,
+        "protocol": "h2mux",
+        "max_connections": 1,
+        "min_streams": 4,
+        "padding": false,
+        "brutal": {
+          "enabled": true,
+          "up_mbps": 400,
+          "down_mbps": 400
+        }
+      }
+    },
+    {
+      "type": "shadowtls",
+      "tag": "stl-1495",
+      "server": "154.17.31.212", 
+      "server_port": 11091,
+      "version": 3, 
+      "password": "fufu", 
+      "tls": {
+        "enabled": true,
+        "server_name": "dm.video.weibocdn.com", 
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome" 
+        }
+      }
+    },
         {
             "type": "direct",
             "tag": "direct"
@@ -292,6 +277,15 @@
     },
     "experimental":
     {
+        "clash_api":
+        {
+            "external_controller": "127.0.0.1:9090",
+            "external_ui_download_url": "",
+            "secret": "22e694e4-093d-44bb-8ed2-b0e548c87a2e",
+            "default_mode": "",
+            "external_ui_download_detour": "",
+            "external_ui": "ui"
+        },
         "cache_file":
         {
             "enabled": true,
