@@ -1,0 +1,602 @@
+{
+  // 日志，info，全显示
+  "log": {
+    "disabled": false, // 禁用日志，关闭状态，意为日志启用
+    "level": "info", // 日志等级，可选值：trace debug info warn error fatal panic
+    "timestamp": true // 添加时间到每行日志
+  },
+  // DNS，使用Google DNS
+  "dns": {
+    "servers": [
+      {
+        "tag": "google",
+        "address": "udp://8.8.8.8" // 可改，支持 TCP UDP DOT DOH DOQ H3等，具体请看Sing-Box官方文档
+      }
+    ]
+  },
+  // 入站节点
+  "inbounds": [
+    // VLESS - Reality + Vision（开始-协议1）
+    {
+      /*
+      由于Sing-Box官方的Reality相关内容并没有跟进XRAY更新（Sing-Box使用的Reality上次更新为 2023.04.06 https://github.com/SagerNet/reality/commits/main/）
+      使用的仍然是Reality较早期设计的版本
+      后面XRAY官方多次修复与更新Reality相关
+      所以在1.9.X版本开始，不再建议使用Sing-Box搭建Reality相关协议
+      请您转向使用ShadowTLS
+
+      如果您打算继续使用Reality，请查看之前的配置文件
+      */
+    },
+    // VLESS - Reality + Vision（结束，如果您不用此协议，从这行一直删到开始-协议1为止）
+    // VLESS - Reality + Padding（开始-协议2) (padding为Sing-Box官方推出的填充功能，类似xray的vision，需要配合多路复用一同启用，适合喜欢多路复用用户）
+    {
+      /*
+      由于Sing-Box官方的Reality相关内容并没有跟进XRAY更新（Sing-Box使用的Reality上次更新为 2023.04.06 https://github.com/SagerNet/reality/commits/main/）
+      使用的仍然是Reality较早期设计的版本
+      后面XRAY官方多次修复与更新Reality相关
+      所以在1.9.X版本开始，不再建议使用Sing-Box搭建Reality相关协议
+      请您转向使用ShadowTLS
+
+      如果您打算继续使用Reality，请查看之前的配置文件
+      */
+    },
+    // VLESS - Reality + Padding（结束，如果您不用此协议，从这行一直删到开始-协议2为止）
+    // VLESS - Reality + Padding + TCP Brutal（开始-协议3) (TCP Brutal为Hysteria官方推出的网络拥塞控制算法，类似的拥塞算法还有BBR、Cubic等，用于网络环境不好的用户使用，需要配合多路复用一同启用，具体请看 https://github.com/apernet/tcp-brutal ）
+    {
+      /*
+      由于Sing-Box官方的Reality相关内容并没有跟进XRAY更新（Sing-Box使用的Reality上次更新为 2023.04.06 https://github.com/SagerNet/reality/commits/main/）
+      使用的仍然是Reality较早期设计的版本
+      后面XRAY官方多次修复与更新Reality相关
+      所以在1.9.X版本开始，不再建议使用Sing-Box搭建Reality相关协议
+      请您转向使用ShadowTLS
+
+      如果您打算继续使用Reality，请查看之前的配置文件
+      */
+    },
+    // VLESS - Reality + Padding + TCP Brutal（结束，如果您不用此协议，从这行一直删到开始-协议3为止）
+    // Trojan - TLS + Padding（开始-协议4）
+    {
+      "type": "trojan",
+      "tag": "Trojan-TLS+Padding", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "password": "密码" // 改，节点密码，可使用UUID或其他，如使用UUID，则可以使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      },
+      "multiplex": {
+        "enabled": true,
+        "padding": true // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+      }
+    },
+    // Trojan - TLS + Padding（结束，如果您不用此协议，从这行一直删到开始-协议4为止）
+    // Trojan - TLS + Padding + TCP Brutal（开始-协议5） (TCP Brutal为Hysteria官方推出的网络拥塞控制算法，类似的拥塞算法还有BBR、Cubic等，用于网络环境不好的用户使用，需要配合多路复用一同启用，具体请看 https://github.com/apernet/tcp-brutal ）
+    {
+      "type": "trojan",
+      "tag": "Trojan-TLS+Padding+Brutal", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "password": "密码" // 改，节点密码，可使用UUID或其他，如使用UUID，则可以使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      },
+      "multiplex": {
+        "enabled": true,
+        "padding": true, // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+        "brutal": {
+          "enabled": true, // 入站开启TCP Brutal功能，具体请看 https://github.com/apernet/tcp-brutal
+          "up_mbps": 500, // 期望中，客户端的下载速率
+          "down_mbps": 50 // 期望中，客户端的上传速率
+        }
+      }
+    },
+    // Trojan - TLS + Padding + TCP Brutal（结束，如果您不用此协议，从这行一直删到开始-协议5为止）
+    // VLESS + WS + TLS + CDN + Padding（开始-协议6）
+    {
+      "type": "vless",
+      "tag": "VLESS-WS+TLS+CDN+Padding", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "uuid": "UUID", // 改，节点UUID，使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+          "flow": "" // 注意，启用Padding，流控需要留空，与vision冲突
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      },
+      "transport": {
+        "type": "ws", // 启用ws
+        "path": "路径", // 改，ws路径
+        "max_early_data": 2048, // 可改，请求中允许的最大有效负载大小。默认启用，具体请看Sing-Box官方文档
+        "early_data_header_name": "Sec-WebSocket-Protocol" // 可改，填写Sec-WebSocket-Protocol，就会和Xray-core兼容
+      },
+      "multiplex": {
+        "enabled": true,
+        "padding": true // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+      }
+    },
+    // VLESS + WS + TLS + CDN + Padding（结束，如果您不用此协议，从这行一直删到开始-协议6为止）
+    // VLESS + WS + TLS + CDN + Padding + TCP Brutal（开始-协议7） (TCP Brutal为Hysteria官方推出的网络拥塞控制算法，类似的拥塞算法还有BBR、Cubic等，用于网络环境不好的用户使用，需要配合多路复用一同启用，具体请看 https://github.com/apernet/tcp-brutal ）
+    {
+      "type": "vless",
+      "tag": "VLESS-WS+TLS+CDN+Padding+Brutal", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "uuid": "UUID", // 改，节点UUID，使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+          "flow": "" // 注意，启用Padding，流控需要留空，与vision冲突
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      },
+      "transport": {
+        "type": "ws", // 启用ws
+        "path": "路径", // 改，ws路径
+        "max_early_data": 2048, // 可改，请求中允许的最大有效负载大小。默认启用，具体请看Sing-Box官方文档
+        "early_data_header_name": "Sec-WebSocket-Protocol" // 可改，填写Sec-WebSocket-Protocol，就会和Xray-core兼容
+      },
+      "multiplex": {
+        "enabled": true,
+        "padding": true, // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+        "brutal": {
+          "enabled": true, // 入站开启TCP Brutal功能，具体请看 https://github.com/apernet/tcp-brutal
+          "up_mbps": 500, // 期望中，客户端的下载速率
+          "down_mbps": 50 // 期望中，客户端的上传速率
+        }
+      }
+    },
+    // VLESS + WS + TLS + CDN + Padding + TCP Brutal（结束，如果您不用此协议，从这行一直删到开始-协议7为止）
+    // Shadowsocks + Padding（开始-协议8）
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-Padding",
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "method": "2022-blake3-aes-128-gcm", // 可改
+      "password": "密码", // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+      "multiplex": {
+        "enabled": true,
+        "padding": true // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+      }
+    },
+    // Shadowsocks + Padding（结束，如果您不用此协议，从这行一直删到开始-协议8为止）
+    // Shadowsocks + Padding（开始-协议9） (TCP Brutal为Hysteria官方推出的网络拥塞控制算法，类似的拥塞算法还有BBR、Cubic等，用于网络环境不好的用户使用，需要配合多路复用一同启用，具体请看 https://github.com/apernet/tcp-brutal ）
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-Padding+Brutal",
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "method": "2022-blake3-aes-128-gcm", // 可改
+      "password": "密码", // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+      "multiplex": {
+        "enabled": true,
+        "padding": true, // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+        "brutal": {
+          "enabled": true, // 入站开启TCP Brutal功能，具体请看 https://github.com/apernet/tcp-brutal
+          "up_mbps": 500, // 期望中，客户端的下载速率
+          "down_mbps": 50 // 期望中，客户端的上传速率
+        }
+      }
+    },
+    // Shadowsocks + Padding（结束，如果您不用此协议，从这行一直删到开始-协议9为止）
+    // Shadowsocks + ShadowTLS + Padding（开始-协议10）
+    {
+      "type": "shadowtls",
+      "tag": "Shadowsocks+ShadowTLS+Padding", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "version": 3, // 可改，ShadowTLS 协议版本，默认为1，建议启用3
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "password": "密码" // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+        }
+      ],
+      "handshake": {
+        "server": "域名", // 改，填想要偷取证书的域名
+        "server_port": 443 // 可改，偷取证书的域名的端口，绝大部分情况为443
+      },
+      "strict_mode": true, // 可改，ShadowTLS 严格模式，仅在ShadowTLS版本为3时可用
+      "detour": "shadowsocks-shadowtls-in" // 可改，转发到指定ss节点，tag要和下面一致，不然会错误
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-shadowtls-in", // 可改，转发到到的ss节点，tag要和上面一致，不然会错误
+      "listen": "127.0.0.1", // 可改，除非你也想使用ShadowTLS+Shadowsocks同时，直接连接Shadowsocks，那么就可以把listen内容直接改成 :: 即可
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "method": "2022-blake3-aes-128-gcm", // 可改
+      "password": "密码", // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+      "multiplex": {
+        "enabled": true,
+        "padding": true // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+      }
+    },
+    // Shadowsocks + ShadowTLS + Padding（结束，如果您不用此协议，从这行一直删到开始-协议10为止）
+    // Shadowsocks + ShadowTLS + Padding（开始-协议11） (TCP Brutal为Hysteria官方推出的网络拥塞控制算法，类似的拥塞算法还有BBR、Cubic等，用于网络环境不好的用户使用，需要配合多路复用一同启用，具体请看 https://github.com/apernet/tcp-brutal ）
+    {
+      "type": "shadowtls",
+      "tag": "Shadowsocks+ShadowTLS+Padding+Brutal", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "version": 3, // 可改，ShadowTLS 协议版本，默认为1，建议启用3
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "password": "密码" // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+        }
+      ],
+      "handshake": {
+        "server": "域名", // 改，填想要偷取证书的域名
+        "server_port": 443 // 可改，偷取证书的域名的端口，绝大部分情况为443
+      },
+      "strict_mode": true, // 可改，ShadowTLS 严格模式，仅在ShadowTLS版本为3时可用
+      "detour": "shadowsocks-shadowtls-in" // 可改，转发到指定ss节点，tag要和下面一致，不然会错误
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-shadowtls-in", // 可改，转发到到的ss节点，tag要和上面一致，不然会错误
+      "listen": "127.0.0.1", // 可改，除非你也想使用ShadowTLS+Shadowsocks同时，直接连接Shadowsocks，那么就可以把listen内容直接改成 :: 即可
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "method": "2022-blake3-aes-128-gcm", // 可改
+      "password": "密码", // 改，使用 sing-box generate rand --base64 16 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate rand --base64 16）
+      "multiplex": {
+        "enabled": true,
+        "padding": true, // 入站开启Padding功能，使服务器仅接收padding后的数据，非padding数据拒绝入站
+        "brutal": {
+          "enabled": true, // 入站开启TCP Brutal功能，具体请看 https://github.com/apernet/tcp-brutal
+          "up_mbps": 500, // 期望中，客户端的下载速率
+          "down_mbps": 50 // 期望中，客户端的上传速率
+        }
+      }
+    },
+    // Shadowsocks + ShadowTLS + Padding（结束，如果您不用此协议，从这行一直删到开始-协议11为止）
+    // Hysteria协议（开始-协议12）
+    {
+      "type": "hysteria",
+      "tag": "Hysteria", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "up_mbps": 300, // 改，期望中客户端的下载速度，单位为mbps
+      "down_mbps": 50, // 改，期望中客户端的上传速度，单位为mbps
+      "obfs": "obfs密码", // 改，混淆密码,可使用openssl rand -hex 20生成
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "auth_str": "auth_str密码" // 改，auth_str密码，可使用 sing-box generate rand --base64 16 生成
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ], // 可改，但默认就好，除非你懂这是干什么的
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      }
+    },
+    // Hysteria协议（结束，如果您不用此协议，从这行一直删到开始-协议12为止）
+    // Hysteria2协议（开始-协议13）
+    {
+      "type": "hysteria2",
+      "tag": "Hysteria2", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "up_mbps": 300, // 改，期望中客户端的下载速度，单位为mbps
+      "down_mbps": 50, // 改，期望中客户端的上传速度，单位为mbps
+      "obfs": { // 如若不启用obfs混淆，请将整个obfs字段整体删除
+        "type": "salamander", // 当前版本此字段不可少，勿删
+        "password": "obfs密码" // 改，混淆密码,可使用openssl rand -hex 20生成
+      },
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "password": "auth_str密码" // 改，auth_str密码，可使用 sing-box generate rand --base64 16 生成
+        }
+      ],
+      "ignore_client_bandwidth": false, // 可改，除非您清楚此项改动是作用于什么，否则保持默认即可。（命令客户端使用 BBR 流量控制算法而不是 Hysteria CC。与 up_mbps 和 down_mbps 冲突。）
+      "masquerade": "", // 可改，除非您清楚此项改动是作用于什么，否则保持默认即可。
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ], // 可改，但默认就好，除非你懂这是干什么的
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      }
+    },
+    // Hysteria2协议（结束，如果您不用此协议，从这行一直删到开始-协议13为止）
+    // TUIC协议（开始-协议14）
+    {
+      "type": "tuic",
+      "tag": "Tuic", // 可改，给节点一个备注
+      "listen": "::", // 可改，未限制，监听所有来访IP，来访IP只要有正确的配置，即可连接
+      "listen_port": 123, // 改，节点的端口
+      "sniff": true, // 开启嗅探
+      "sniff_override_destination": false, // 无特殊需求，此项可不开，具体请看Sing-Box官方文档
+      "users": [
+        {
+          "name": "singbox", // 可改，多用户配置时用作区分
+          "uuid": "UUID", // 改，节点UUID，使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+          "password": "密码" // 改，节点密码，可以使用 sing-box generate uuid 生成（无法使用请补全sing-box所在的绝对路径 /绝对/路径/sing-box generate uuid）
+        }
+      ],
+      "congestion_control": "bbr", // QUIC 流量控制算法，可选值: cubic, new_reno, bbr
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ], // 可改，但默认就好，除非你懂这是干什么的
+        "certificate_path": "/域名/证书/存放/绝对路径", // 改，域名证书存放的绝对路径
+        "key_path": "/域名/私钥/存放/绝对路径" // 改，域名私钥存放的绝对路径
+      }
+    }
+    // TUIC协议（结束，如果您不用此协议，从这行一直删到开始-协议14为止）
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct" // 双栈自动直接出站
+    },
+    {
+      "type": "direct",
+      "tag": "direct-ipv4-prefer-out", // IPV4优先直接出站
+      "domain_strategy": "prefer_ipv4"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-ipv4-only-out", // 仅IPV4直接出站
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-ipv6-prefer-out", // IPV6优先直接出站
+      "domain_strategy": "prefer_ipv6"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-ipv6-only-out", // 仅IPV6直接出站
+      "domain_strategy": "ipv6_only"
+    },
+    // 附赠 WARP-free，如想更改，具体请参考Sing-Box官方文档
+    {
+      "type": "wireguard",
+      "tag": "wireguard-out",
+      "server": "engage.cloudflareclient.com",
+      "server_port": 2408,
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:812a:4929:7d2a:af62:351c/128"
+      ],
+      "private_key": "gBthRjevHDGyV0KvYwYE52NIPy29sSrVr6rcQtYNcXA=",
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved": [
+        6,
+        146,
+        6
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "wireguard-ipv4-prefer-out", // 优先IPV4-WireGuard出站
+      "detour": "wireguard-out",
+      "domain_strategy": "prefer_ipv4"
+    },
+    {
+      "type": "direct",
+      "tag": "wireguard-ipv4-only-out", // 仅IPV4-WireGuard出站
+      "detour": "wireguard-out",
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "direct",
+      "tag": "wireguard-ipv6-prefer-out", // 优先IPV6-WireGuard出站
+      "detour": "wireguard-out",
+      "domain_strategy": "prefer_ipv6"
+    },
+    {
+      "type": "direct",
+      "tag": "wireguard-ipv6-only-out", // 仅IPV6-WireGuard出站
+      "detour": "wireguard-out",
+      "domain_strategy": "ipv6_only"
+    }
+  ],
+  "route": {
+    "rule_set": [
+      {
+        "tag": "geosite-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-netflix.srs", // 可自选来源
+        "download_detour": "direct-ipv4-only-out",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-geolocation-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
+        "download_detour": "direct-ipv4-only-out",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-tld-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tld-cn.srs",
+        "download_detour": "direct-ipv4-only-out",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "direct-ipv4-only-out",
+        "update_interval": "1d"
+      }
+    ],
+    "rules": [
+      {
+        // 使用 WARP解锁Netflix和OpenAI，还需解锁什么，请参考V2ray官方域名库，自行按照格式添加（https://github.com/v2fly/domain-list-community/tree/master/data）
+        "rule_set": [
+          "geosite-netflix"
+        ],
+        "outbound": "wireguard-ipv6-only-out" // 使用warp节点通讯
+      },
+      {
+        // 使用 可莉🅥 整合的 ChatGPT 域名规则，如无需要请删除或注释相关代码（https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/AI.list）
+        "domain": [
+          "api.statsig.com",
+          "browser-intake-datadoghq.com",
+          "cdn.openai.com",
+          "chat.openai.com",
+          "chat.openai.com.cdn.cloudflare.net",
+          "ios.chat.openai.com",
+          "o33249.ingest.sentry.io",
+          "openai-api.arkoselabs.com",
+          "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
+          "openaicomproductionae4b.blob.core.windows.net",
+          "production-openaicom-storage.azureedge.net",
+          "static.cloudflareinsights.com"
+        ],
+        "domain_suffix": [
+          ".algolia.net",
+          ".auth0.com",
+          ".chatgpt.com",
+          ".challenges.cloudflare.com",
+          ".client-api.arkoselabs.com",
+          ".events.statsigapi.net",
+          ".featuregates.org",
+          ".identrust.com",
+          ".intercom.io",
+          ".intercomcdn.com",
+          ".launchdarkly.com",
+          ".oaistatic.com",
+          ".oaiusercontent.com",
+          ".observeit.net",
+          ".openai.com",
+          ".openaiapi-site.azureedge.net",
+          ".openaicom.imgix.net",
+          ".segment.io",
+          ".sentry.io",
+          ".stripe.com"
+        ],
+        "domain_keyword": [
+          "openaicom-api"
+        ],
+        "outbound": "wireguard-ipv6-prefer-out" // 使用warp节点通讯
+      },
+      {
+        // 使用 可莉🅥 整合的 Copilot 域名规则，如无需要请删除或注释相关代码（https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/AI.list）
+        "domain": [
+          "api.githubcopilot.com",
+          "bat.bing.com",
+          "browser.events.data.microsoft.com",
+          "config.edge.skype.com",
+          "content.lifecycle.office.net",
+          "copilot-proxy.githubusercontent.com",
+          "copilot.microsoft.com",
+          "edge.microsoft.com",
+          "edgeservices.bing.com",
+          "functional.events.data.microsoft.com",
+          "login.live.com",
+          "services.bingapis.com",
+          "storage.live.com",
+          "strict.bing.com",
+          "sydney.bing.com",
+          "www.bing.com",
+          "www.bingapis.com"
+        ],
+        "domain_suffix": [
+          ".bing.com"
+        ],
+        "outbound": "wireguard-ipv6-prefer-out" // 使用warp节点通讯
+      },
+      {
+        // 使用 可莉🅥 整合的 Bing AI 域名规则，如无需要请删除或注释相关代码（https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/AI.list）
+        "domain_suffix": [
+          ".bing.com",
+          ".bing.com.cn",
+          ".bing.net",
+          ".bingagencyawards.com",
+          ".bingapistatistics.com",
+          ".bingsandbox.com",
+          ".bingvisualsearch.com",
+          ".bingworld.com"
+        ],
+        "outbound": "wireguard-ipv6-prefer-out" // 使用warp节点通讯
+      },
+      {
+        // 使用 可莉🅥 整合的 Gemini 域名规则，如无需要请删除或注释相关代码（https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/AI.list）
+        "domain": [
+          "aistudio.google.com",
+          "bard.google.com",
+          "gemini.google.com",
+          "generativelanguage.googleapis.com"
+        ],
+        "outbound": "wireguard-ipv6-prefer-out" // 使用warp节点通讯
+      },
+      {
+        // 使用 可莉🅥 整合的 Claude 域名规则，如无需要请删除或注释相关代码（https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Rule/AI.list）
+        "domain_suffix": [
+          ".anthropic.com",
+          ".claude.ai"
+        ],
+        "outbound": "wireguard-ipv6-prefer-out" // 使用warp节点通讯
+      },
+      {
+        "rule_set": [
+          "geosite-geolocation-cn",
+          "geosite-tld-cn",
+          "geoip-cn"
+        ], // 中国大陆的域名
+        "outbound": "wireguard-out" // 使用warp节点通讯
+      }
+    ],
+    // "auto_detect_interface": true,  //仅支持 Linux、Windows 和 macOS。如果您是这三者其一，并在使用中发现异常或错误，可尝试取消此行注释
+    "final": "direct"
+  }
+}

@@ -71,41 +71,45 @@
     ],
     "outbounds":
     [
-    {
-      "type": "shadowsocks",
-      "tag": "proxy",
-      "method": "2022-blake3-chacha20-poly1305", 
-      "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
-      "detour": "stl-1495",
-      "multiplex": {
-        "enabled": true,
-        "protocol": "h2mux",
-        "max_connections": 1,
-        "min_streams": 4,
-        "padding": false,
-        "brutal": {
-          "enabled": true,
-          "up_mbps": 400,
-          "down_mbps": 400
-        }
-      }
-    },
-    {
-      "type": "shadowtls",
-      "tag": "stl-1495",
-      "server": "154.17.31.212", 
-      "server_port": 11091,
-      "version": 3, 
-      "password": "fufu", 
-      "tls": {
-        "enabled": true,
-        "server_name": "dm.video.weibocdn.com", 
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome" 
-        }
-      }
-    },
+        {
+            "type": "shadowsocks",
+            "tag": "proxy",
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
+            "detour": "stl-1495",
+            "multiplex":
+            {
+                "enabled": true,
+                "protocol": "h2mux",
+                "max_connections": 1,
+                "min_streams": 4,
+                "padding": false,
+                "brutal":
+                {
+                    "enabled": true,
+                    "up_mbps": 500,
+                    "down_mbps": 500
+                }
+            }
+        },
+        {
+            "type": "shadowtls",
+            "tag": "stl-1495",
+            "server": "154.17.31.212",
+            "server_port": 11091,
+            "version": 3,
+            "password": "fufu",
+            "tls":
+            {
+                "enabled": true,
+                "server_name": "dm.video.weibocdn.com",
+                "utls":
+                {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
         {
             "type": "direct",
             "tag": "direct"
