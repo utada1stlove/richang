@@ -95,7 +95,7 @@
         {
             "type": "shadowtls",
             "tag": "stl-1495",
-            "server": "154.17.31.212",
+            "server": "2605:52c0:2:1551:a422:d5ff:fef4:cb53", // 2605:52c0:2:1551:a422:d5ff:fef4:cb53 //154.17.31.212
             "server_port": 11091,
             "version": 3,
             "password": "fufu",
