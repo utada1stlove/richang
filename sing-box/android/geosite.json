@@ -194,14 +194,13 @@
             [
                 "auto",
                 "direct",
-                "aws-shadowtls",
-                "cmi-hy2-hk",
                 "cmi-reality-hk",
-                "cmi-hk-stls",
+                "Hong Kong 14",
+                "Singapore 03",
+                "Japan 07",
+                "Japan 08",
+                "HKK3-ShadowTLS",
                 "cmi-tuic-hk",
-                "jp-GC-多路复用",
-                "hk-oracle",
-                "oracle-ss",
                 "BWH-DC8",
                 "dmit-pro",
                 "Seattle 04"
@@ -470,9 +469,9 @@
             "type": "selector",
             "outbounds":
             [
-                "cmi-hy2-hk",
                 "cmi-reality-hk",
-                "cmi-hk-stls",
+                "Hong Kong 14",
+                "HKK3-ShadowTLS",
                 "cmi-tuic-hk",
                 "proxy"
             ]
@@ -482,7 +481,7 @@
             "type": "selector",
             "outbounds":
             [
-                "aws-shadowtls",
+                "Singapore 03",
                 "proxy"
             ]
         },
@@ -491,9 +490,8 @@
             "type": "selector",
             "outbounds":
             [
-                "jp-GC-多路复用",
-                "hk-oracle",
-                "oracle-ss",
+                "Japan 07",
+                "Japan 08",
                 "proxy"
             ]
         },
@@ -522,16 +520,15 @@
             "outbounds":
             [
                 "direct",
-                "aws-shadowtls",
-                "cmi-hy2-hk",
                 "cmi-reality-hk",
-                "cmi-hk-stls",
+                "Hong Kong 14",
+                "HKK3-ShadowTLS",
                 "cmi-tuic-hk",
-                "jp-GC-多路复用",
-                "hk-oracle",
-                "oracle-ss",
                 "BWH-DC8",
                 "dmit-pro",
+                "Japan 07",
+                "Japan 08",
+                "Singapore 03",
                 "Seattle 04"
             ],
             "url": "http://www.gstatic.com/generate_204",
@@ -539,116 +536,88 @@
             "tolerance": 50
         },
         {
-            "detour": "aws-shadowtls-out",
-            "method": "2022-blake3-chacha20-poly1305",
-            "password": "6tndolp6SPJeAwH3rN42w+iUteE/z3Pu58fV2ruunek=",
-            "tag": "aws-shadowtls",
-            "type": "shadowsocks"
-        },
-        {
-            "password": "E33Gl0T1ZKu8h3ZzXYRDNGC1RVNBObXfCK7jTqG4EJQ=",
-            "server": "book.colinlin.top",
-            "server_port": 11091,
-            "tag": "aws-shadowtls-out",
-            "tls":
-            {
-                "enabled": true,
-                "server_name": "dm.video.weibocdn.com",
-                "utls":
-                {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "type": "shadowtls",
-            "version": 3
-        },
-            {
-      "type": "shadowsocks",
-      "tag":"dmit-pro",
-      "detour": "dmitpro-out",
-      "method": "2022-blake3-chacha20-poly1305",
-      "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=", //强制需要生成的
-      "multiplex": {
-        "enabled": true
-      }
-    },
-    {
-      "type": "shadowtls",
-      "tag": "dmitpro-out",
-      "server": "2605:52c0:2:1551:74fd:b8ff:fef6:469d", //服务器ip地址 or 域名
-      "server_port": 11091, //服务器对应的端口
-      "version": 3,
-      "password": "makoto", //不需要生成的
-      "tls": {
-        "enabled": true,
-        "server_name": "dm.video.weibocdn.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      }
-    },
-        {
-            "type": "hysteria2",
-            "tag": "cmi-hy2-hk",
-            "server": "45.78.27.223",
-            "server_port": 11092,
-            "up_mbps": 1000,
-            "down_mbps": 1000,
-            "password": "IV9fo2OOo2s2",
-            "tls":
-            {
-                "enabled": true,
-                "insecure": true,
-                "server_name": "bing.com",
-                "alpn":
-                [
-                    "h3"
-                ],
-                "ech":
-                {
-                    "enabled": true,
-                    "pq_signature_schemes_enabled": true,
-                    "dynamic_record_sizing_disabled": false,
-                    "config":
-                    [
-                        "-----BEGIN ECH CONFIGS-----",
-                        "AFf+DQBTAAAgACBjo2JA3WgSKrol5/yeXZSIarWidRWhiz81ZCKOm3PcIwAIAAEA",
-                        "AQABAAMAIFstLXBxLXNpZ25hdHVyZS1zY2hlbWVzLWVuYWJsZWRdAAA=",
-                        "-----END ECH CONFIGS-----"
-                    ]
-                }
-            }
+            "type": "shadowsocks",
+            "tag": "Seattle 04",
+            "server": "5510a89.kiitux.xyz",
+            "server_port": 45351,
+            "method": "aes-128-gcm",
+            "password": "e88064fe5c7f4d49"
         },
         {
             "type": "shadowsocks",
-            "tag": "jp-GC-多路复用",
-            "server": "video.tikonline.live",
-            "server_port": 32298,
-            "method": "aes-128-gcm",
-            "password": "yzMfVOKJr8kXEBpEQ3MaVw==",
-            "multiplex":    
+            "tag": "BWH-DC8",
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "2NFuJC2ObRCYU8dAujkGp8TD+coFE4gWnETXfU331uY=",
+            "detour": "stl-dc8",
+            "multiplex":
             {
                 "enabled": true,
                 "protocol": "h2mux",
                 "max_connections": 1,
                 "min_streams": 4,
-                "padding": false
+                "padding": false,
+                "brutal":
+                {
+                    "enabled": true,
+                    "up_mbps": 1000,
+                    "down_mbps": 1000
+                }
             }
         },
         {
-            "detour": "stl-4263",
-            "method": "2022-blake3-chacha20-poly1305",
-            "password": "wN7RwvYnXYSH0PzPcnw3JMOWnKfMZY4VhpIK9sHylHw=",
-            "tag": "BWH-DC8",
-            "type": "shadowsocks"
-        },
-        {
-            "password": "ZeoIIbbsY/fzs59Bdml+r4hZNyXV5lF996m1/f218p0=",
+            "type": "shadowtls",
+            "tag": "stl-dc8",
             "server": "93.179.115.247",
             "server_port": 11091,
-            "tag": "stl-4263",
+            "version": 3,
+            "password": "NcAj1LfmDUO9qPgzJF79teBf91zyhB8X9AJJW5+ZfaA=",
+            "tls":
+            {
+                "enabled": true,
+                "server_name": "p16-ttug-sg.ibyteimg.com",
+                "utls":
+                {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "Singapore 03",
+            "server": "5510a89.kiitux.xyz",
+            "server_port": 44040,
+            "type": "shadowsocks",
+            "method": "aes-128-gcm",
+            "password": "e88064fe5c7f4d49"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "dmit-pro",
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
+            "detour": "stl-dmit",
+            "multiplex":
+            {
+                "enabled": true,
+                "protocol": "h2mux",
+                "max_connections": 1,
+                "min_streams": 4,
+                "padding": true,
+                "brutal":
+                {
+                    "enabled": true,
+                    "up_mbps": 500,
+                    "down_mbps": 500
+                }
+            }
+        },
+        {
+            "type": "shadowtls",
+            "tag": "stl-dmit",
+            "server": "2605:52c0:2:1551:a422:d5ff:fef4:cb53",
+            "server_port": 11091,
+            "version": 3,
+            "password": "fufu",
             "tls":
             {
                 "enabled": true,
@@ -658,15 +627,29 @@
                     "enabled": true,
                     "fingerprint": "chrome"
                 }
-            },
-            "type": "shadowtls",
-            "version": 3
+            }
         },
         {
-            "type": "shadowsocks",
-            "tag": "Seattle 04",
+            "tag": "Hong Kong 14",
             "server": "5510a89.kiitux.xyz",
-            "server_port": 45351,
+            "server_port": 44162,
+            "type": "shadowsocks",
+            "method": "aes-128-gcm",
+            "password": "e88064fe5c7f4d49"
+        },
+        {
+            "tag": "Japan 07",
+            "server": "5510a89.kiitux.xyz",
+            "server_port": 46826,
+            "type": "shadowsocks",
+            "method": "aes-128-gcm",
+            "password": "e88064fe5c7f4d49"
+        },
+        {
+            "tag": "Japan 08",
+            "server": "5510a89.kiitux.xyz",
+            "server_port": 46464,
+            "type": "shadowsocks",
             "method": "aes-128-gcm",
             "password": "e88064fe5c7f4d49"
         },
@@ -696,22 +679,28 @@
         },
         {
             "type": "shadowsocks",
-            "tag": "cmi-hk-stls",
+            "tag": "HKK3-ShadowTLS",
             "method": "2022-blake3-chacha20-poly1305",
             "password": "7DKK/wELpwq4I5tK1CkIgD2YQSf8pVQYgNLeKEWmipE=",
-            "detour": "shadowsocks-cmi-out",
+            "detour": "bwh-out",
             "multiplex":
             {
                 "enabled": true,
-                "protocol": "h2mux",
+                "protocol": "smux",
                 "max_connections": 1,
                 "min_streams": 4,
-                "padding": false
+                "padding": true,
+                "brutal":
+                {
+                    "enabled": true,
+                    "up_mbps": 1000,
+                    "down_mbps": 1000
+                }
             }
         },
         {
             "type": "shadowtls",
-            "tag": "shadowsocks-cmi-out",
+            "tag": "bwh-out",
             "server": "45.78.27.223",
             "server_port": 11091,
             "version": 3,
@@ -726,39 +715,6 @@
                     "fingerprint": "chrome"
                 }
             }
-        },
-        {
-            "type": "shadowsocks",
-            "tag": "oracle-ss",
-            "server": "video.tikonline.live",
-            "server_port": 11083,
-            "method": "aes-128-gcm",
-            "password": "UhjLo0KIi5Jm+m/JPqdhIJdHPIJIpyN0eFs+bHlkx+E="
-        },
-        {
-            "type": "vless",
-            "tag": "hk-oracle",
-            "server": "45.78.27.223",
-            "server_port": 60223,
-            "uuid": "23fedf09-129a-47e2-8f82-5a62711d8475",
-            "flow": "xtls-rprx-vision",
-            "tls":
-            {
-                "enabled": true,
-                "server_name": "tcvb.or.jp",
-                "utls":
-                {
-                    "enabled": true,
-                    "fingerprint": "firefox"
-                },
-                "reality":
-                {
-                    "enabled": true,
-                    "public_key": "OxIMmLTVX6cmq2DpRV2Narl-QOgeN1ZtdFpQLlveAAs",
-                    "short_id": "7e246553"
-                }
-            },
-            "packet_encoding": "xudp"
         },
         {
             "type": "tuic",
@@ -913,7 +869,11 @@
                 "outbound": "Spotify"
             },
             {
-                "rule_set": ["geosite-tiktok","geosite-pixiv"],
+                "rule_set":
+                [
+                    "geosite-tiktok",
+                    "geosite-pixiv"
+                ],
                 "outbound": "TikTok"
             },
             {
