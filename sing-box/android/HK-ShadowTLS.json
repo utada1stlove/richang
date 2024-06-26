@@ -112,7 +112,7 @@
       "tls":
       {
         "enabled": true,
-        "server_name": "p16-ttug-sg.ibyteimg.com",
+        "server_name": "fe-video-qc.xhscdn.com",
         "utls":
         {
           "enabled": true,
