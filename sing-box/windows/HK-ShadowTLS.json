@@ -75,8 +75,8 @@
             "type": "shadowsocks",
             "tag": "proxy",
             "method": "2022-blake3-chacha20-poly1305",
-            "password": "7DKK/wELpwq4I5tK1CkIgD2YQSf8pVQYgNLeKEWmipE=",
-            "detour": "bwh-out",
+            "password": "HTX6i1R+IiYvZ0WgMibBvLpjxEPaYN0ePVbBMnJy/jk=",
+            "detour": "stl-1485",
             "multiplex":
             {
                 "enabled": true,
@@ -87,22 +87,22 @@
                 "brutal":
                 {
                     "enabled": true,
-                    "up_mbps": 1000,
-                    "down_mbps": 1000
+                    "up_mbps": 500,
+                    "down_mbps": 500
                 }
             }
         },
         {
             "type": "shadowtls",
-            "tag": "bwh-out",
+            "tag": "stl-1485",
             "server": "45.78.27.223",
-            "server_port": 11091,
+            "server_port": 24412,
             "version": 3,
-            "password": "qLoTPe4pckrMTPv3coYrkSHgCSrzIsAt/ejhPEIFWHA=",
+            "password": "fufu",
             "tls":
             {
                 "enabled": true,
-                "server_name": "p16-ttug-sg.ibyteimg.com",
+                "server_name": "dm.video.weibocdn.com",
                 "utls":
                 {
                     "enabled": true,
@@ -146,14 +146,14 @@
                 "rule_set":
                 [
                     "geosite-github",
-                    "geosite-spotify",
-                    "geosite-cloudflare"
+                    "geosite-pikpak"
                 ],
                 "outbound": "proxy"
             },
             {
                 "rule_set":
                 [
+                    "diy-domain",
                     "Server-direct",
                     "Doapp",
                     "sama",
@@ -185,17 +185,17 @@
                 "download_detour": "proxy"
             },
             {
-                "tag": "geosite-spotify",
+                "tag": "geosite-pikpak",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-spotify.srs",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
                 "download_detour": "proxy"
             },
             {
-                "tag": "geosite-cloudflare",
+                "tag": "diy-domain",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cloudflare.srs",
+                "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Diy.srs",
                 "download_detour": "proxy"
             },
             {
