@@ -72,35 +72,37 @@
     "outbounds":
     [
         {
-            "type": "shadowsocks",
+            "type": "tuic",
             "tag": "proxy",
-            "method": "2022-blake3-chacha20-poly1305",
-            "password": "c9gJ8Mqr7PV39jfXYXUkT9exyjLtmawH9x2CPXKlCew=",
-            "detour": "bwh-stl",
-            "multiplex":
-            {
-                "enabled": true,
-                "protocol": "h2mux",
-                "max_connections": 1,
-                "min_streams": 4,
-                "padding": false
-            }
-        },
-        {
-            "type": "shadowtls",
-            "tag": "bwh-stl",
             "server": "45.78.27.223",
-            "server_port": 24412,
-            "version": 3,
-            "password": "OE3CE0hOKtuMr0B7ZImUHzdi5YogOtsJqqQiSLcUaKQ=",
+            "server_port": 11092,
+            "uuid": "b3c5b84b-963e-412e-a873-98a730e3203e",
+            "password": "IyxbtKA4woHr",
+            "congestion_control": "bbr",
+            "udp_relay_mode": "native",
+            "zero_rtt_handshake": false,
+            "heartbeat": "10s",
             "tls":
             {
                 "enabled": true,
-                "server_name": "titan.pinduoduo.com",
-                "utls":
+                "insecure": true,
+                "server_name": "bing.com",
+                "alpn":
+                [
+                    "h3"
+                ],
+                "ech":
                 {
                     "enabled": true,
-                    "fingerprint": "chrome"
+                    "pq_signature_schemes_enabled": true,
+                    "dynamic_record_sizing_disabled": false,
+                    "config":
+                    [
+                        "-----BEGIN ECH CONFIGS-----",
+                        "AFf+DQBTAAAgACDekaAyUPgIZAGJw9og2BJOWGBp3k5WYWM7iJPlwycrdgAIAAEA",
+                        "AQABAAMAIFstLXBxLXNpZ25hdHVyZS1zY2hlbWVzLWVuYWJsZWRdAAA=",
+                        "-----END ECH CONFIGS-----"
+                    ]
                 }
             }
         },
