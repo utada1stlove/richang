@@ -59,14 +59,19 @@
     "inbounds":
     [
         {
-            "type": "mixed",
-            "tag": "mixed-in",
-            "listen": "::",
-            "listen_port": 7891,
-            "tcp_fast_open": true,
-            "udp_fragment": true,
+            "type": "tun",
+            "tag": "tun-in",
+            "stack": "system",
+            "interface_name": "utun",
+            "inet4_address": "172.19.0.1/30",
+            "domain_strategy": "",
+            "mtu": 1420,
+            "auto_route": true,
+            "strict_route": true,
             "sniff": true,
-            "set_system_proxy": true
+            "sniff_timeout": "300ms",
+            "sniff_override_destination": true,
+            "udp_timeout": 300
         }
     ],
     "outbounds":
