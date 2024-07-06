@@ -80,7 +80,7 @@
             "type": "shadowsocks",
             "tag": "proxy",
             "method": "2022-blake3-chacha20-poly1305",
-            "password": "c9gJ8Mqr7PV39jfXYXUkT9exyjLtmawH9x2CPXKlCew=",
+            "password": "FHDW6tjmiVgmaVIvUcumTcmTzsCZDR8a/KW+ModJ9fU=",
             "detour": "bwh-stl",
             "multiplex":
             {
@@ -88,20 +88,26 @@
                 "protocol": "h2mux",
                 "max_connections": 1,
                 "min_streams": 4,
-                "padding": false
+                "padding": true,
+                "brutal":
+                {
+                    "enabled": true,
+                    "up_mbps": 500,
+                    "down_mbps": 500
+                }
             }
         },
         {
             "type": "shadowtls",
             "tag": "bwh-stl",
             "server": "45.78.27.223",
-            "server_port": 24412,
+            "server_port": 11091,
             "version": 3,
-            "password": "OE3CE0hOKtuMr0B7ZImUHzdi5YogOtsJqqQiSLcUaKQ=",
+            "password": "fufu",
             "tls":
             {
                 "enabled": true,
-                "server_name": "titan.pinduoduo.com",
+                "server_name": "lf16-tiktok-common.ibytedtos.com",
                 "utls":
                 {
                     "enabled": true,
