@@ -3,6 +3,7 @@
     {
         "level": "debug",
         "disabled": false,
+        "output": "C:\\Users\\imaletion\\Desktop\\sing-box-bat\\logs\\测试rule.log",
         "timestamp": true
     },
     "experimental":
@@ -149,7 +150,7 @@
     },
     "inbounds":
     [
-        // {"type": "mixed", "tag": "mixed-in", "listen": "::", "listen_port": 7891, "tcp_fast_open": true, "udp_fragment": true, "sniff": true, "set_system_proxy": true },
+        //{"type": "mixed", "tag": "mixed-in", "listen": "::", "listen_port": 7891, "tcp_fast_open": true, "udp_fragment": true, "sniff": true, "set_system_proxy": true },
         {
             "type": "tun",
             "tag": "tun-in",
@@ -803,7 +804,7 @@
     "route":
     {
         "auto_detect_interface": true,
-        "final": "proxy",
+        "final": "direct",
         "rules":
         [
             {
@@ -1003,12 +1004,19 @@
             {
                 "rule_set":
                 [
-                    "Doapp",
-                    "sama",
+                    "kook"                
+                ],
+                "outbound": "direct"                                
+            },
+            {
+                "rule_set":
+                [
                     "geosite-huya",
                     "geosite-douyu",
                     "geosite-baidu",
                     "Server-direct",
+                    "Doapp",
+                    "sama" 
                     "geosite-private",
                     "geoip-cn",
                     "geosite-geolocation-!cn"
@@ -1328,6 +1336,13 @@
                 "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
                 "download_detour": "auto"
             },
+            {
+                "tag": "kook",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/kook.srs",
+                "download_detour": "auto"
+            },            
             {
                 "tag": "geosite-huya",
                 "type": "remote",
