@@ -3,6 +3,7 @@
     {
         "level": "debug",
         "disabled": false,
+        "output": "C:\\Users\\imaletion\\Desktop\\sing-box-bat\\logs\\测试rule.log",
         "timestamp": true
     },
     "experimental":
@@ -149,7 +150,7 @@
     },
     "inbounds":
     [
-        // {"type": "mixed", "tag": "mixed-in", "listen": "::", "listen_port": 7891, "tcp_fast_open": true, "udp_fragment": true, "sniff": true, "set_system_proxy": true },
+        //{"type": "mixed", "tag": "mixed-in", "listen": "::", "listen_port": 7891, "tcp_fast_open": true, "udp_fragment": true, "sniff": true, "set_system_proxy": true },
         {
             "type": "tun",
             "tag": "tun-in",
@@ -223,7 +224,7 @@
             "type": "shadowsocks",
             "tag": "BWH-DC8-Shadowtls",
             "method": "2022-blake3-chacha20-poly1305",
-            "password": "2NFuJC2ObRCYU8dAujkGp8TD+coFE4gWnETXfU331uY=",
+            "password": "25c0t0aKljrmPmA7deqHo8y3TGCwFgDGio+nLpX7ivE=",
             "detour": "BWH-DC8-IN",
             "multiplex":
             {
@@ -246,11 +247,11 @@
             "server": "93.179.115.247",
             "server_port": 11091,
             "version": 3,
-            "password": "NcAj1LfmDUO9qPgzJF79teBf91zyhB8X9AJJW5+ZfaA=",
+            "password": "fufu",
             "tls":
             {
                 "enabled": true,
-                "server_name": "p16-ttug-sg.ibyteimg.com",
+                "server_name": "dm.video.weibocdn.com", 
                 "utls":
                 {
                     "enabled": true,
@@ -1003,12 +1004,19 @@
             {
                 "rule_set":
                 [
-                    "Doapp",
-                    "sama",
+                    "kook"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "rule_set":
+                [
                     "geosite-huya",
                     "geosite-douyu",
                     "geosite-baidu",
                     "Server-direct",
+                    "Doapp",
+                    "sama", 
                     "geosite-private",
                     "geoip-cn",
                     "geosite-geolocation-!cn"
@@ -1328,6 +1336,13 @@
                 "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
                 "download_detour": "auto"
             },
+            {
+                "tag": "kook",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/kook.srs",
+                "download_detour": "auto"
+            },            
             {
                 "tag": "geosite-huya",
                 "type": "remote",
