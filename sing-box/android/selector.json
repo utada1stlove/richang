@@ -233,12 +233,6 @@
       "default": "direct"
     },
     {
-      "tag": "Cloud-Box",
-      "type": "selector",
-      "outbounds": ["BWH-ShadowTls","DMIT","YxVM-BestVM","vless-ech","auto"],
-      "default": "auto"
-    },
-    {
       "type": "direct",
       "tag": "direct"
     },
@@ -275,15 +269,6 @@
       },
       {
         "rule_set": [
-          "geosite-yandex",
-          "geosite-dropbox",
-          "geosite-pikpak",
-          "geosite-mega"
-        ],
-        "outbound": "Cloud-Box"
-      },
-      {
-        "rule_set": [
           "diy-domain",
           "Server-direct",
           "Doapp",
@@ -308,34 +293,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-steam.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-yandex",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-yandex.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-dropbox",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-dropbox.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-pikpak",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-pikpak.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-mega",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-mega.srs",
         "download_detour": "auto"
       },
       {
