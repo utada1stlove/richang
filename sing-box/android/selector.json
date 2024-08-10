@@ -275,12 +275,6 @@
       },
       {
         "rule_set": [
-
-        ],
-        "outbound": "Microsoft"
-      },
-      {
-        "rule_set": [
           "geosite-yandex",
           "geosite-dropbox",
           "geosite-pikpak",
