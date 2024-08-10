@@ -1,0 +1,36 @@
+{
+  "inbounds": [
+    {
+      "type": "tuic",
+      "tag": "tuic-in",
+      "listen": "::",
+      "listen_port": 9000,
+      "users": [
+        {
+          "name": "fufu",
+          "uuid": "39b78d6e-99a5-45ae-a5b0-c6b02cff677a", //sing-box generate uuid
+          "password": "f8d4924e8c6dcbbcb72f257a815c2e05" //sing-box generate --help
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "server_name": "alist.infy.top",
+        "alpn": ["h3"],
+        "certificate_path": "/etc/letsencrypt/live/alist.infy.top/fullchain.pem",
+        "key_path": "/etc/letsencrypt/live/alist.infy.top/privkey.pem",
+        "ech": {
+          "enabled": true,
+          "pq_signature_schemes_enabled": true,
+          // "key": "自动生成的ECH密钥",
+          "key_path": "/etc/sing-box/ech_key.pem"
+      }
+    }
+   }
+  ],
+  "outbounds": [
+    {
+      "type": "direct"
+    }
+  ]
+}

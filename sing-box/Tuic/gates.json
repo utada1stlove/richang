@@ -1,0 +1,40 @@
+{
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "::",
+      "listen_port": 1080
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "tuic",
+      "tag": "proxy",
+      "server": "alist.infy.top",
+      "server_port": 9000,
+      "uuid": "39b78d6e-99a5-45ae-a5b0-c6b02cff677a",
+      "password": "f8d4924e8c6dcbbcb72f257a815c2e05",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "native",
+      "zero_rtt_handshake": true,
+      "heartbeat": "10s",
+      "tls": {
+        "enabled": true,
+        "server_name": "alist.infy.top",
+        "alpn": ["h3"],
+        "insecure": false,
+        "ech": {
+          "enabled": true,
+          "pq_signature_schemes_enabled": true,
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "AEP+DQA/AAAgACB/8Y2slc3C5Sp0u01iNHXY28DeesD/",
+            "cwcQoSVfiqpMEQAIAAEA",
+            "AQABAAMADGNkbi5pbmZ5LnRvcAAA"
+          ]
+        }
+      }
+    }
+  ]
+}
