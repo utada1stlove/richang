@@ -266,7 +266,7 @@
         "outbound": "direct"
       },
       {
-        "rule_set": ["geosite-steam","geosite-microsoft","geosite-github","geosite-onedrive","geosite-azure"],
+        "rule_set": ["geosite-steam"],
         "outbound": "proxy"
       },
       {
@@ -309,34 +309,6 @@
       }
     ],
     "rule_set": [
-      {
-        "tag": "geosite-microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-github",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-onedrive",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-onedrive.srs",
-        "download_detour": "auto"
-      },
-      {
-        "tag": "geosite-azure",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-azure.srs",
-        "download_detour": "auto"
-      },
       {
         "tag": "geosite-steam",
         "type": "remote",
