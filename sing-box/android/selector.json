@@ -95,7 +95,7 @@
         "vless-ech",
         "auto"
       ],
-      "default": "BWH-ShadowTls",
+      "default": "auto",
       "interrupt_exist_connections": false
     },
     {
@@ -322,147 +322,147 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-github",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-onedrive",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-onedrive.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-azure",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-azure.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-steam",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-steam.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-yandex",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-yandex.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-dropbox",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-dropbox.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-pikpak",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-pikpak.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-mega",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-mega.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "diy-domain",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Diy.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "Server-direct",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Server-direct.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "Doapp",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Doapp.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "sama",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-tencent",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tencent.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-bilibili",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-douyu",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-douyu.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-huya",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-huya.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-private",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-private.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       },
       {
         "tag": "geosite-category-ads-all",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "proxy"
+        "download_detour": "auto"
       }
     ],
     "auto_detect_interface": true,
