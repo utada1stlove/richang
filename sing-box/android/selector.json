@@ -293,91 +293,91 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-steam.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "diy-domain",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Diy.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "Server-direct",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Server-direct.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "Doapp",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/Doapp.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "sama",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/sama.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-tencent",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-tencent.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-bilibili",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-bilibili.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-douyu",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-douyu.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-huya",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-huya.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-private",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-private.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       },
       {
         "tag": "geosite-category-ads-all",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "auto"
+        "download_detour": "proxy"
       }
     ],
     "auto_detect_interface": true,
