@@ -227,11 +227,6 @@
       "tolerance": 50
     },
     {
-      "tag": "Microsoft",
-      "type": "selector",
-      "outbounds": ["direct","auto","BWH-ShadowTls","DMIT","YxVM-BestVM","vless-ech"]
-    },
-    {
       "tag": "BiliBili",
       "type": "selector",
       "outbounds": ["direct","auto","BWH-ShadowTls","DMIT","YxVM-BestVM","vless-ech"],
@@ -271,7 +266,7 @@
         "outbound": "direct"
       },
       {
-        "rule_set": ["geosite-steam"],
+        "rule_set": ["geosite-steam","geosite-microsoft","geosite-github","geosite-onedrive","geosite-azure"],
         "outbound": "proxy"
       },
       {
@@ -280,10 +275,7 @@
       },
       {
         "rule_set": [
-          "geosite-microsoft",
-          "geosite-github",
-          "geosite-onedrive",
-          "geosite-azure"
+
         ],
         "outbound": "Microsoft"
       },
