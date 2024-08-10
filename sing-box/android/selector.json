@@ -221,7 +221,13 @@
     {
       "tag": "auto",
       "type": "urltest",
-      "outbounds": ["direct","BWH-ShadowTls","DMIT","YxVM-BestVM","vless-ech"],
+      "outbounds": [
+        "direct",
+        "BWH-ShadowTls",
+        "DMIT",
+        "YxVM-BestVM",
+        "vless-ech"
+      ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "10m",
       "tolerance": 50
@@ -229,7 +235,14 @@
     {
       "tag": "BiliBili",
       "type": "selector",
-      "outbounds": ["direct","auto","BWH-ShadowTls","DMIT","YxVM-BestVM","vless-ech"],
+      "outbounds": [
+        "direct",
+        "auto",
+        "BWH-ShadowTls",
+        "DMIT",
+        "YxVM-BestVM",
+        "vless-ech"
+      ],
       "default": "direct"
     },
     {
@@ -260,7 +273,17 @@
         "outbound": "direct"
       },
       {
-        "rule_set": ["geosite-steam"],
+        "rule_set": [
+          "geosite-steam",
+          "nFirefox",
+          "geosite-google",
+          "geosite-googlefcm",
+          "geosite-google-scholar",
+          "geosite-google-trust-services",
+          "geosite-economist",
+          "geosite-telegram",
+          "geoip-telegram"
+        ],
         "outbound": "proxy"
       },
       {
@@ -288,6 +311,69 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "nFirefox",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/utada1stlove/rule/main/sing-box/ruleset/srs/nFirefox.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-googlefcm",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-googlefcm.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-google-scholar",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google-scholar.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-google-trust-services",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google-trust-services.srs",
+        "download_detour": "proxy"
+      },
+      {
+        "tag": "geosite-economist",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-economist.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "download_detour": "auto"
+      },
       {
         "tag": "geosite-steam",
         "type": "remote",
