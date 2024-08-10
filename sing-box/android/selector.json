@@ -95,7 +95,7 @@
         "vless-ech",
         "auto"
       ],
-      "default": "auto",
+      "default": "BWH-ShadowTls",
       "interrupt_exist_connections": false
     },
     {
