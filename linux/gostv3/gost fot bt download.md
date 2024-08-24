@@ -25,7 +25,7 @@ services:
   - name: socks-service
     addr: 127.0.0.1:1080
     handler:
-      type: tcp
+      type: tcp ## 这里错了 必须是socks5 不然混淆了sock4、socks5以及http协议
     forwarder:
       nodes:
         - name: natseek-socks

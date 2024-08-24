@@ -8,7 +8,10 @@ sudo apt update
 sudo apt install build-essential pkg-config automake libtool git zlib1g-dev libssl-dev libgeoip-dev libboost-dev libboost-system-dev libboost-chrono-dev libboost-random-dev libtorrent-rasterbar-dev qtbase5-dev qttools5-dev-tools libqt5svg5-dev
 ```
 
+> - libtorrent新版不支持 需要1.2.19版本
+
 ### 1.2 获取源码
+
 ```bash
 git clone https://github.com/c0re100/qBittorrent-Enhanced-Edition.git
 cd qBittorrent-Enhanced-Edition
@@ -78,7 +81,7 @@ sudo systemctl start qbittorrent.service
 
 ### 3.4 检查服务状态
 ```bash
-sudo systemctl status qbittorrent.service
+sudo systemctl status qbittorrent.servicea
 ```
 
 ## 4. 配置 qBittorrent
@@ -113,7 +116,32 @@ WebUI\Password_ha1=您生成的密码哈希
 Session\DefaultSavePath=/var/lib/qbittorrent/Downloads
 ```
 
+> 这里可以修改端口 、id、密码
+>
+> 后面也可以修改 不过需要经过下面几个步骤
+>
+> 1. 更新反向代理配置（如果使用）： 如果你按照指南设置了 Nginx 反向代理，需要更新 Nginx 配置文件中的端口号。编辑文件：
+>
+>    ```bash
+>    sudo nano /etc/nginx/sites-available/qbittorrent
+>    ```
+>
+>    将 `proxy_pass http://localhost:8080;` 改为 `proxy_pass http://localhost:9000;`（或你选择的其他端口）。
+>
+> 2. 重启服务： 修改完配置后，重启 qBittorrent 服务：
+>
+>    ```bash
+>    sudo systemctl restart qbittorrent.service
+>    ```
+>
+>    1. 如果修改了 Nginx 配置，也需要重启 Nginx：
+>
+>       ```bash
+>       sudo systemctl restart nginx
+>       ```
+
 ### 4.4 重启服务
+
 ```bash
 sudo systemctl start qbittorrent.service
 ```
