@@ -76,14 +76,6 @@
         "disable_cache": true
       },
       {
-        "process_name": ["TencentMeeting", "NemoDesktop", "ToDesk", "ToDesk_Service", "WeChat", "Tailscale", "wireguard-go", "Tunnelblick", "softwareupdated", "kubectl" ],
-        "server": "ali"
-      },
-      {
-        "process_name": ["DropboxMacUpdate", "Dropbox"],
-        "server": "dns_proxy"
-      },
-      {
         "outbound": "any",
         "server": "dns_resolver"
       },
@@ -676,12 +668,7 @@
         "outbound": "Apple"
       },
       {
-        "rule_set": [
-          "geosite-microsoft",
-          "geosite-github",
-          "geosite-onedrive",
-          "geosite-azure"
-        ],
+        "rule_set": ["geosite-microsoft", "geosite-github", "geosite-onedrive", "geosite-azure" ],
         "outbound": "Microsoft"
       },
       {
@@ -701,12 +688,7 @@
         "outbound": "DIY"
       },
       {
-        "rule_set": [
-          "geosite-yandex",
-          "geosite-dropbox",
-          "geosite-pikpak",
-          "geosite-mega"
-        ],
+        "rule_set": ["geosite-yandex", "geosite-dropbox", "geosite-pikpak", "geosite-mega" ],
         "outbound": "Cloud-Box"
       },
       {
