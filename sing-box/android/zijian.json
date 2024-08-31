@@ -396,6 +396,12 @@
       }
     },
     {
+      "tag": "Inoreader",
+      "type": "selector",
+      "outbounds": ["HongKong", "Singapore", "Japan", "America", "Others"],
+      "default": "HongKong"
+    },
+    {
       "tag": "OpenAI",
       "type": "selector",
       "outbounds": ["HongKong", "Singapore", "Japan", "America", "Others"],
@@ -661,6 +667,10 @@
         "outbound": "direct"
       },
       {
+        "rule_set": "geosite-inoreader",
+        "outbound": "OpenAI"
+      },
+      {
         "rule_set": "geosite-openai",
         "outbound": "OpenAI"
       },
@@ -784,6 +794,13 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+        "download_detour": "auto"
+      },
+      {
+        "tag": "geosite-inoreader",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-inoreader.srs",
         "download_detour": "auto"
       },
       {
