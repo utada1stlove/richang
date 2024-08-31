@@ -76,18 +76,7 @@
         "disable_cache": true
       },
       {
-        "process_name": [
-          "TencentMeeting",
-          "NemoDesktop",
-          "ToDesk",
-          "ToDesk_Service",
-          "WeChat",
-          "Tailscale",
-          "wireguard-go",
-          "Tunnelblick",
-          "softwareupdated",
-          "kubectl"
-        ],
+        "process_name": ["TencentMeeting", "NemoDesktop", "ToDesk", "ToDesk_Service", "WeChat", "Tailscale", "wireguard-go", "Tunnelblick", "softwareupdated", "kubectl" ],
         "server": "ali"
       },
       {
@@ -443,14 +432,7 @@
     {
       "tag": "Spotify",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ],
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ],
       "default": "America"
     },
     {
@@ -472,39 +454,18 @@
     {
       "tag": "Apple",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ]
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ]
     },
     {
       "tag": "Microsoft",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ],
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ],
       "default": "Singapore"
     },
     {
       "tag": "Games",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ]
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ]
     },
     {
       "tag": "Streaming",
@@ -526,26 +487,12 @@
     {
       "tag": "DIY",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ]
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ]
     },
     {
       "tag": "Global",
       "type": "selector",
-      "outbounds": [
-        "direct",
-        "HongKong",
-        "Singapore",
-        "Japan",
-        "America",
-        "Others"
-      ],
+      "outbounds": ["direct", "HongKong", "Singapore", "Japan", "America", "Others" ],
       "default": "HongKong"
     },
     {
@@ -668,7 +615,7 @@
       },
       {
         "rule_set": "geosite-inoreader",
-        "outbound": "OpenAI"
+        "outbound": "Inoreader"
       },
       {
         "rule_set": "geosite-openai",
