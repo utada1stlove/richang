@@ -1,0 +1,10 @@
+version: '3'
+services:
+  deeplx-pro:
+    image: lvzo/deeplx-pro:latest
+    container_name: deeplx-pro
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      - DEEPL_COOKIES=""
